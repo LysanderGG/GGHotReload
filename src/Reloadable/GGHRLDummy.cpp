@@ -5,14 +5,14 @@
 //---------------------------------------------------------------
 
 GGHRLDummy::GGHRLDummy()
-  : GGHObject(std::string("RLDummy"))
+  : GGHObject(std::string("GGHRLDummy"))
 {
-    std::cout << "Create RLDummy" << std::endl;
+    std::cout << "Create GGHRLDummy" << std::endl;
 }
 
 GGHRLDummy::~GGHRLDummy()
 {
-    std::cout << "Destroy RLDummy" << std::endl;
+    std::cout << "Destroy GGHRLDummy" << std::endl;
 }
 
 //---------------------------------------------------------------
