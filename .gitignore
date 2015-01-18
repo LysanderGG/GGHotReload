@@ -1,0 +1,11 @@
+projects/Debug/*
+projects/*/Debug/*
+*.suo
+*.log
+*.tlog
+projects/*/Release/
+*.vcxproj.user
+*.vcxproj.filters
+*.sdf
+projects/Release
+*.opensdf
