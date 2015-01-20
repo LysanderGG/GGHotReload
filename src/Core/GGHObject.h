@@ -14,7 +14,29 @@ class GGHObject;
 /* Function pointer types */
 typedef GGHObject*  (*GGH_fp_create) ();
 typedef void        (*GGH_fp_destroy)(GGHObject*);
-typedef void        (*GGH_fp_run)    ();
+typedef void        (*GGH_fp_run)    (const GGHObject*);
+
+/* 
+ * The GGH_DEFINE_AS_RL macro used to export the create/destroy/run functions. 
+ * A class inheriting GGHObject must use this macro.
+ *
+ * Implementations must define public constructor, destructor and a runInternal method.
+ * This runInternal() method must not be called directly but through GGHObject run() method.
+ */
+#define GGH_DEFINE_AS_RL(_type) \
+    extern "C" \
+    { \
+        GGHRLDLL _type* _type##_create() { \
+            return new _type##(); \
+        } \
+        GGHRLDLL void _type##_destroy(_type##* pObj) { \
+            delete pObj; \
+        } \
+        GGHRLDLL void _type##_run(_type##* pObj) { \
+            pObj->runInternal(); \
+        } \
+    }
+
 
 /**
  * Base class managing the reloadability.

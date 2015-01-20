@@ -14,6 +14,10 @@ class GGHRLDLL GGHRLDummy : public GGHObject
 public:
     GGHRLDummy();
     ~GGHRLDummy();
+    void runInternal();
+
+private:
+    int i;
 };
 
 #endif /* GGHDUMMY_H */

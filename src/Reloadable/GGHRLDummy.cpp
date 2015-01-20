@@ -6,6 +6,7 @@
 
 GGHRLDummy::GGHRLDummy()
   : GGHObject(std::string("GGHRLDummy"))
+  , i(0)
 {
     std::cout << "Create GGHRLDummy" << std::endl;
 }
@@ -17,28 +18,13 @@ GGHRLDummy::~GGHRLDummy()
 
 //---------------------------------------------------------------
 
-static
-void
-_run()
+void GGHRLDummy::runInternal() 
 {
-    std::cout << "Hello World!" << std::endl;
+    std::cout << i++ << std::endl;
 }
 
 //---------------------------------------------------------------
 
-extern "C" 
-{
-    GGHRLDLL GGHRLDummy* GGHRLDummy_create() {
-        return new GGHRLDummy();
-    }
-
-    GGHRLDLL void GGHRLDummy_destroy(GGHRLDummy* pObj) {
-        delete pObj;
-    }
-
-    GGHRLDLL void GGHRLDummy_run() {
-        _run();
-    }
-}
+GGH_DEFINE_AS_RL(GGHRLDummy)
 
 //---------------------------------------------------------------

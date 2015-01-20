@@ -20,7 +20,7 @@ void
 GGHObject::run() const
 {
     if( m_funcRun ) {
-        m_funcRun();
+        m_funcRun(this);
     }
 }
 
