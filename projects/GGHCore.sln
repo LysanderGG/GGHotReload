@@ -6,8 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GGHCore", "GGHCore\GGHCore.vcxproj", "{B77FC965-CF3F-4679-9057-396C75F584A6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GGHReloadable", "GGHReloadable\GGHReloadable.vcxproj", "{38625CA4-F842-4ECC-B303-FDD1050700BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B77FC965-CF3F-4679-9057-396C75F584A6} = {B77FC965-CF3F-4679-9057-396C75F584A6}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Main", "Main\Main.vcxproj", "{7537CC59-927E-470C-AB8D-18FBE31D8A39}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B77FC965-CF3F-4679-9057-396C75F584A6} = {B77FC965-CF3F-4679-9057-396C75F584A6}
+		{38625CA4-F842-4ECC-B303-FDD1050700BB} = {38625CA4-F842-4ECC-B303-FDD1050700BB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
