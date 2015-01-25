@@ -14,7 +14,12 @@ int main(int argc, char** argv)
         c = getchar();
 
         if( bPause ) {
-            pLib = GGHUtilsDLL::loadLibrary("GGHReloadable");
+            bool bRes = GGHUtilsDLL::moveLibraryToOld("E:\\Dev\\GGHotReload\\projects\\Debug\\GGHReloadable");
+            if( !bRes ) {
+                return -1;
+            }
+
+            pLib = GGHUtilsDLL::loadLibrary("GGHReloadable_old");
             if( !pLib ) {
                 return -1;
             }
@@ -26,6 +31,10 @@ int main(int argc, char** argv)
 
             pObj = (GGHRLDummy*)pFuncCreate();
             bPause = false;
+        }
+
+        if( 'r' == c ) {
+            pObj->reload();
         }
 
         if( 'p' == c ) {
