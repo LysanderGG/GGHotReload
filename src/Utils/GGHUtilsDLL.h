@@ -12,6 +12,7 @@ public:
     static void*    loadLibrary     (const std::string& libPath);
     static bool     unloadLibrary   (void* pLib);
     static void*    getFunc         (const void* pLib, const std::string& sFuncName);
+    static bool     moveLibraryToOld(const std::string& libPath);
 };
 
 #endif /* GGHUTILSDLL_H */

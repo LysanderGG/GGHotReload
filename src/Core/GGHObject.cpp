@@ -27,15 +27,21 @@ GGHObject::run() const
 bool 
 GGHObject::reload()
 {
+    bool bMustCloseLib = true;
     void* pLib = GGHUtilsDLL::loadLibrary("GGHReloadable");
+    if( !pLib ) {
+        pLib = GGHUtilsDLL::loadLibrary("GGHReloadable_old");
+        bMustCloseLib = false;
+    }
     if( !pLib ) {
         // TODO error message
         return false;
     }
 
     GGH_fp_run pNewFunc = (GGH_fp_run)GGHUtilsDLL::getFunc(pLib, m_sBaseName + "_run" );
-    m_funcRun = ( pNewFunc ) ? pNewFunc : nullptr;
-    GGHUtilsDLL::unloadLibrary(pLib);
+    if( pNewFunc ) {
+        m_funcRun = pNewFunc;
+    }
 
     return true;
 }
